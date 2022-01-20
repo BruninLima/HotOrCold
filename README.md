@@ -1,2 +1,3 @@
 # HotOrCold
- Wordle with different rules
+
+Wordle with different rules
