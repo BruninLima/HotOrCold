@@ -143,4 +143,4 @@ def new_game(size, ruleset):
 
 # if __name__ ==
 
-new_game(5, 'closeness')
+new_game(5, 'height')
