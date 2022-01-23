@@ -9,7 +9,7 @@ BLACKLIST = '0123456789+=-/;.[]{}()~^`'
 def generate_word_size_n(filename, n):
     "Generates a file named filename containing the words of length n"
 
-    with open('raw_word_list.txt', 'r') as f:
+    with open('br_word_list.txt', 'r') as f:
         X = f.readlines()
 
     with open(filename, 'w') as f:
@@ -29,4 +29,23 @@ def generate_word_size_n(filename, n):
                         f.write(word.lower())
 
 
-generate_word_size_n('word_size_5.txt', 5)
+#generate_word_size_n('word_size_5.txt', 5)
+
+
+def get_largest_word():
+    with open('br_word_list.txt', 'r') as f:
+        X = f.readlines()
+
+    maxsize = 0
+    maxwords = []
+    for word in X:
+        if len(word) > maxsize:
+            maxwords = [word]
+            maxsize = len(word)
+        if len(word) == maxsize:
+            maxwords.append(word)
+
+    return maxsize, maxwords
+
+
+print(get_largest_word())

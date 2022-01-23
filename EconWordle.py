@@ -5,9 +5,3 @@
 # For each GREEN you get rewarded a few coins back.
 
 # You can guess while you have coins (probably)
-
-COINS = 10 
-
-
-LIMAO - 1
-

@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+
+<html lang="en">
+    <head>
+
+        <meta name="viewport" content = "initial-scale=1, width=device-width">
+        <title> Welcome to Hot or Cold </title>
+        <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+
+        <style>
+            .letter {
+                resize: none;
+                overflow: auto;
+            }   
+
+            .center {
+                text-align:center;
+            }
+
+            .guessed_letter {
+                width : 15px;
+                border: 2px black solid;
+            }
+
+            .Hot {
+                width : 15px;
+                background-color: lightsalmon;
+            }
+
+            .Green {
+                width : 15px;
+                background-color: limegreen;
+            }
+
+            .Cold {
+                width : 15px;
+                background-color: lightskyblue;
+            }
+            
+        </style>
+        <link rel="stylesheet" href="{{ url_for('static', filename= 'css/style.css') }}">
+        
+    </head>
+    
+    <body>
+        <h1> Amo meu amo </h1>
+
+        <form method = "POST">
+            <div class = 'center'>
+            <select name = "ruleset">
+                <option value = "closeness">Closeness</option>
+                <option value = "height">Height</option>
+                <input type = "submit" value = 'Select ruleset'>
+            </div>
+        </form>
+        </select> 
+        
+        <br>
+        <br>
+        <form method = "POST">
+            <div class = "center">
+                {% for turn in score: %}
+                    {% for letter, point  in turn: %}
+                        <textarea name = "Guess_1" rows = "1" cols = "1" maxlength = "1" class = 'letter guessed_letter {{point}}' disabled>{{letter}}</textarea>
+                    {% endfor %}
+                <br>
+                <br>
+                {% endfor %}
+                
+                        
+            <script>
+                function submitForm() {
+
+                    if (event.keyCode == 13) return True
+
+                }
+
+                function nextCell(id){
+                    console.log(" alo ", [id, id+1])
+                    document.getElementById(id + 1).focus();
+
+                }
+            </script>
+        
+            <textarea name = "Guess_1" rows = "1" cols = "1" maxlength = "1" class = 'letter' id = 1 onKeyPress="alert('you pressed a key'+ id)" autofocus></textarea> <textarea name = "Guess_2" rows = "1" cols = "1" maxlength = "1" class = 'letter' id = 2 onKeyPress="nextCell(id)"></textarea> <textarea name = "Guess_3" rows = "1" cols = "1" maxlength = "1" class = 'letter' id = 3 onKeyPress="nextCell(id)"></textarea> <textarea name = "Guess_4" rows = "1" cols = "1" maxlength = "1" class = 'letter' id = 4 onKeyPress="nextCell(id)"></textarea> <textarea name = "Guess_5" rows = "1" cols = "1" maxlength = "1" class = 'letter' id = 5 onKeyPress="submitForm()"></textarea> 
+
+
+            <input type = "submit" id = 'Guess'>
+            </div>
+        </form>
+       
+        <br>
+        <br>
+        
+        <div id="kbd">
+        <div class = 'center'>
+        <button id="kbd_q">Q</button>
+        <button id="kbd_w">W</button>
+        <button id="kbd_e">E</button>
+        <button id="kbd_r">R</button>
+        <button id="kbd_t">T</button>
+        <button id="kbd_y">Y</button>
+        <button id="kbd_u">U</button>
+        <button id="kbd_i">I</button>
+        <button id="kbd_o">O</button>
+        <button id="kbd_p">P</button>
+        <button id="kbd_backspace">⌫</button>
+        </div>
+        <br>
+        <div class = 'center'>
+        <button id="kbd_a">A</button>
+        <button id="kbd_s">S</button>
+        <button id="kbd_d">D</button>
+        <button id="kbd_f">F</button>
+        <button id="kbd_g">G</button>
+        <button id="kbd_h">H</button>
+        <button id="kbd_j">J</button>
+        <button id="kbd_k">K</button>
+        <button id="kbd_l">L</button>
+        </div>
+        <br>
+        <div class = 'center'>
+        <button id="kbd_z">Z</button>
+        <button id="kbd_x">X</button>
+        <button id="kbd_c">C</button>
+        <button id="kbd_v">V</button>
+        <button id="kbd_b">B</button>
+        <button id="kbd_n">N</button>
+        <button id="kbd_m">M</button>
+        </div>
+        <br>
+        <div class = 'center'>
+        <button id="kbd_enter">ENTER</button>
+        </div>
+        </div>
+    </body>
+</html>

@@ -25,7 +25,7 @@ alphabet = ascii_lowercase
 # Main Functions:
 
 
-def letter_score(guessed_letter, correct_letter, ruleset):
+def get_letter_score(guessed_letter, correct_letter, ruleset):
     """ Function that returns if given letter is either corret, hot or cold
 
             There are 2 different rulesets for determining wether a letter is hot or cold:
@@ -106,6 +106,17 @@ def get_new_word(size):
     return X[random_word]
 
 
+def valid_word(word):
+
+    with open('word_size_5.txt', 'r') as f:
+        X = f.readlines()
+
+    if word+'\n' in X:
+        return True
+    else:
+        return False
+
+
 def new_game(size, ruleset):
     """
     Main Function.
@@ -129,7 +140,7 @@ def new_game(size, ruleset):
         Current_turn += 1
 
         for i, j in zip(Current_Guess, TARGET_WORD):
-            score_i = letter_score(i, j, ruleset)
+            score_i = get_score(i, j, ruleset)
 
             Current_Score.append(score_i)
         print(Current_Score)
@@ -143,4 +154,4 @@ def new_game(size, ruleset):
 
 # if __name__ ==
 
-new_game(5, 'height')
+# new_game(5, 'height')
