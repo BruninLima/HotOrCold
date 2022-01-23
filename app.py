@@ -41,6 +41,12 @@ def index():
                 Score += [Current_Score]
 
                 return render_template("index.html", score=Score)
+
+            else:
+                print("Word Not Valid")
+
+                return render_template("index.html", score=Score, warning=True)
+
         if len(request.form) == 1:
 
             ruleset = request.form['ruleset']
