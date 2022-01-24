@@ -99,7 +99,7 @@ def get_new_word(size):
     # Size in string please
     size = str(size)
 
-    with open('hotorcold\data\word_size_' + size + '.txt', 'r') as f:
+    with open('hotorcold/data/word_size_' + size + '.txt', 'r') as f:
         X = f.readlines()
     random_word = np.random.randint(len(X))
 
@@ -108,7 +108,7 @@ def get_new_word(size):
 
 def valid_word(word):
 
-    with open('hotorcold\data\word_size_5.txt', 'r') as f:
+    with open('hotorcold/data/word_size_5.txt', 'r') as f:
         X = f.readlines()
 
     if word+'\n' in X:

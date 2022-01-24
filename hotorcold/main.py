@@ -4,7 +4,7 @@ from hotorcold.funcs import get_new_word, valid_word, get_letter_score
 
 app = Flask(__name__)
 
-secret_word = 'arara'  # get_new_word(5)
+secret_word = get_new_word(5)
 
 GAME_START = False
 
