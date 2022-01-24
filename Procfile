@@ -1,1 +1,1 @@
-web: gunicorn hotorcold.app:app
+web: gunicorn hotorcold.main:app
