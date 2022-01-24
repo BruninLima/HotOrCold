@@ -53,3 +53,8 @@ def index():
             print(" ")
 
     return render_template("index.html", ruleset=ruleset)
+
+
+if __name__ == "__main__":
+
+    app.run()
