@@ -1,5 +1,5 @@
 from flask import Flask, render_template, request
-from funcs import get_new_word, valid_word, get_letter_score
+from app.funcs import get_new_word, valid_word, get_letter_score
 
 
 app = Flask(__name__)

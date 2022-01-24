@@ -1,1 +1,1 @@
-web: gunicorn -b :$PORT hotorcold:app
+web: gunicorn -b :8000 wsgi:app
