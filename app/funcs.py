@@ -99,7 +99,7 @@ def get_new_word(size):
     # Size in string please
     size = str(size)
 
-    with open('word_size_' + size + '.txt', 'r') as f:
+    with open('app\data\word_size_' + size + '.txt', 'r') as f:
         X = f.readlines()
     random_word = np.random.randint(len(X))
 
@@ -108,50 +108,10 @@ def get_new_word(size):
 
 def valid_word(word):
 
-    with open('word_size_5.txt', 'r') as f:
+    with open('app\data\word_size_5.txt', 'r') as f:
         X = f.readlines()
 
     if word+'\n' in X:
         return True
     else:
         return False
-
-
-def new_game(size, ruleset):
-    """
-    Main Function.
-
-    Ruleset \in ('height', 'closeness')
-    """
-
-    TARGET_WORD = get_new_word(size)
-
-    GAME_OVER = False
-
-    Current_turn = 0
-    print('The current ruleset is ' + ruleset)
-    print('The word lenght is ' + str(size))
-    while not GAME_OVER:
-
-        print('Type your guess.')
-        Current_Guess = input()
-
-        Current_Score = []
-        Current_turn += 1
-
-        for i, j in zip(Current_Guess, TARGET_WORD):
-            score_i = get_score(i, j, ruleset)
-
-            Current_Score.append(score_i)
-        print(Current_Score)
-
-        if Current_turn > 5:
-
-            GAME_OVER = True
-
-    return 'Game Over'
-
-
-# if __name__ ==
-
-# new_game(5, 'height')

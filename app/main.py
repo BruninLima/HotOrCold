@@ -1,6 +1,5 @@
 from flask import Flask, render_template, request
-from pyrsistent import v
-from main import get_new_word, new_game, valid_word, get_letter_score
+from app.funcs import get_new_word, valid_word, get_letter_score
 
 
 app = Flask(__name__)
@@ -23,8 +22,6 @@ def index():
 
         if len(request.form) > 1:
 
-            # It was a guess
-            #guessed_word = 'ponto'
             guessed_word = ''.join(request.form[key]
                                    for key in request.form.keys()).lower()
 
@@ -40,12 +37,12 @@ def index():
 
                 Score += [Current_Score]
 
-                return render_template("index.html", score=Score)
+                return render_template("index.html", score=Score, ruleset=ruleset)
 
             else:
                 print("Word Not Valid")
 
-                return render_template("index.html", score=Score, warning=True)
+                return render_template("index.html", score=Score, warning=True, ruleset=ruleset)
 
         if len(request.form) == 1:
 
@@ -55,4 +52,4 @@ def index():
             print(" RULESET CHANGED TO " + ruleset)
             print(" ")
 
-    return render_template("index.html")
+    return render_template("index.html", ruleset=ruleset)

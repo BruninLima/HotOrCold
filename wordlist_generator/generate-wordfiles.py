@@ -29,9 +29,6 @@ def generate_word_size_n(filename, n):
                         f.write(word.lower())
 
 
-#generate_word_size_n('word_size_5.txt', 5)
-
-
 def get_largest_word():
     with open('br_word_list.txt', 'r') as f:
         X = f.readlines()
@@ -46,6 +43,3 @@ def get_largest_word():
             maxwords.append(word)
 
     return maxsize, maxwords
-
-
-print(get_largest_word())

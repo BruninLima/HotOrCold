@@ -8,37 +8,45 @@
         <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
 
         <style>
-            .letter {
+                h1 {
+                border: 2px #eee solid;
+                color: brown;
+                text-align: center;
+                padding: 10px;
+                }
+
+                .letter {
                 resize: none;
                 overflow: auto;
-            }   
+                }
 
-            .center {
-                text-align:center;
-            }
+                .center {
+                text-align: center;
+                }
 
-            .guessed_letter {
-                width : 15px;
+                .guessed_letter {
+                width: 15px;
                 border: 2px black solid;
-            }
+                }
 
-            .Hot {
-                width : 15px;
-                background-color: lightsalmon;
-            }
+                .Hot {
+                width: 15px;
+                background-color: salmon;
+                }
 
-            .Green {
-                width : 15px;
+                .Green {
+                width: 15px;
                 background-color: limegreen;
-            }
+                }
 
-            .Cold {
-                width : 15px;
-                background-color: lightskyblue;
-            }
-            
+                .Cold {
+                width: 15px;
+                background-color: skyblue;
+                }
+
         </style>
-        <link rel="stylesheet" href="{{ url_for('static', filename= 'css/style.css') }}">
+
+        <!--<link rel="stylesheet" href="{{ url_for('static', filename= 'css/style.css') }}">-->
         
     </head>
     
@@ -48,8 +56,13 @@
         <form method = "POST">
             <div class = 'center'>
             <select name = "ruleset">
-                <option value = "closeness">Closeness</option>
-                <option value = "height">Height</option>
+                {% if ruleset == 'closeness' %}
+                    <option value = "closeness">Closeness</option>
+                    <option value = "height">Height</option>
+                {% else: %}
+                    <option value = "height">Height</option>    
+                    <option value = "closeness">Closeness</option>
+                {% endif %}
                 <input type = "submit" value = 'Select ruleset'>
             </div>
         </form>
@@ -71,21 +84,27 @@
             <script>
                 function submitForm() {
 
-                    if (event.keyCode == 13) return True
+                    if (event.keyCode == 13) {
+                        
+                        document.getElementById('Guess').click()
+
+                    }
 
                 }
 
                 function nextCell(id){
-                    console.log(" alo ", [id, id+1])
-                    document.getElementById(id + 1).focus();
-
+                    document.getElementById(+id + 1).focus()
                 }
             </script>
         
             <textarea name = "Guess_1" rows = "1" cols = "1" maxlength = "1" class = 'letter' id = 1 onKeyPress="nextCell(id)" autofocus></textarea> <textarea name = "Guess_2" rows = "1" cols = "1" maxlength = "1" class = 'letter' id = 2 onKeyPress="nextCell(id)"></textarea> <textarea name = "Guess_3" rows = "1" cols = "1" maxlength = "1" class = 'letter' id = 3 onKeyPress="nextCell(id)"></textarea> <textarea name = "Guess_4" rows = "1" cols = "1" maxlength = "1" class = 'letter' id = 4 onKeyPress="nextCell(id)"></textarea> <textarea name = "Guess_5" rows = "1" cols = "1" maxlength = "1" class = 'letter' id = 5 onKeyPress="submitForm()"></textarea> 
 
+            <br>
+            <input type = "submit" id = 'Guess' style="display: none;">
 
-            <input type = "submit" id = 'Guess'>
+            {% if warning == True: %}
+                <script>alert('Esta palavra é inválida :c ')</script>
+            {% endif %}
             </div>
         </form>
        

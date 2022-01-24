@@ -358,26 +358,3 @@ template {
 #center {
   text-align: center;
 }
-
-.guessed_letter {
-  text-align: center;
-}
-
-.Hot {
-  height: 500px;
-  width: 500px;
-  background-color: lightsalmon;
-}
-
-.Green {
-  height: 500px;
-  width: 500px;
-  background-color: limegreen;
-}
-
-.Cold {
-  height: 500px;
-  width: 500px;
-  background-color: lightskyblue;
-}
-
